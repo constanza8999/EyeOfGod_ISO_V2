@@ -30,9 +30,12 @@ EYEOFGOD_ISO_V2/
 ├── README_KALI_HDD.md                 ← Este archivo
 │
 ├── scripts/
-│   ├── build_kali_hdd.sh              ← Build completo de la ISO
-│   ├── setup_hdd_persistence.sh       ← Configurar persistencia en HDD
-│   └── grub_kali.cfg                  ← GRUB (copia de iso_root/ para build)
+│   ├── build_kali_hdd.sh              ← Build completo de la ISO (Linux/WSL)
+│   ├── setup_hdd_persistence.sh       ← Configurar persistencia en HDD (Linux)
+│   ├── grub_kali.cfg                  ← GRUB (copia de iso_root/ para build)
+│   ├── flash_iso.ps1                  ← Flashear ISO en Windows (PowerShell)
+│   ├── wsl_build.ps1                  ← Build desde WSL en Windows (PowerShell)
+│   └── flash_iso.bat                  ← Menú interactivo para Windows
 │
 └── iso_root/
     └── boot/grub/grub.cfg             ← Menú GRUB principal (40+ entradas)
@@ -72,14 +75,15 @@ BIOS/UEFI
 
 ---
 
-## INSTALACIÓN PASO A PASO
+## INSTALACIÓN — LINUX / WSL
 
 ### Requisitos
 - HDD/SSD externo: mínimo **32GB** (recomendado 128GB+)
-- Sistema para construir: **Kali Linux** o Debian/Ubuntu
-- `xorriso`, `squashfs-tools`, `grub-pc-bin`, `grub-efi-amd64-bin`
+- Sistema para construir: **Kali Linux**, Debian/Ubuntu, o **WSL en Windows**
 
-### Paso 1 — Instalar dependencias (en Kali)
+### 🔹 Opción A — Linux nativo
+
+#### Paso 1 — Instalar dependencias (en Kali/Debian/Ubuntu)
 ```bash
 sudo apt update
 sudo apt install -y \
@@ -91,58 +95,88 @@ sudo apt install -y \
   python3 python3-pip memtest86+
 ```
 
-### Paso 2 — Construir la ISO
+#### Paso 2 — Construir la ISO
 ```bash
-# Clonar o descomprimir el proyecto
 cd EYEOFGOD_ISO_V2
 
-# El build script acepta --clean para empezar desde cero
-sudo bash scripts/build_kali_hdd.sh --clean .
-```
-
-El script acepta las siguientes opciones:
-```bash
 # Build normal
-sudo bash scripts/build_kali_hdd.sh .
-
-# Build limpiando el directorio anterior
 sudo bash scripts/build_kali_hdd.sh --clean .
 
 # Ver ayuda
 sudo bash scripts/build_kali_hdd.sh --help
 ```
 
-### Paso 3 — Flashear al HDD externo
+#### Paso 3 — Flashear al HDD externo
 ```bash
 # ⚠ REEMPLAZA /dev/sdX con tu HDD externo (verifica con lsblk)
-lsblk  # identificar el disco correcto (busca el de tamaño correcto)
+lsblk  # identificar el disco correcto
 
 sudo dd if=EyeOfGod_KaliPurple_2025.3_HDD.iso \
          of=/dev/sdX \
          bs=4M status=progress && sync
 ```
 
-> ⚠ **IMPORTANTE:** Asegúrate de que `/dev/sdX` sea el HDD externo y **NO** tu disco del sistema. Verifica con `lsblk` antes de ejecutar `dd`.
+> ⚠ **IMPORTANTE:** Asegúrate de que `/dev/sdX` sea el HDD externo y **NO** tu disco del sistema.
 
-### Paso 4 — Configurar persistencia (opcional pero recomendado)
+#### Paso 4 — Configurar persistencia (opcional pero recomendado)
 ```bash
-# Desde el proyecto
-cd EYEOFGOD_ISO_V2
-
-# Sin cifrado (datos visibles si alguien accede al disco)
+# Sin cifrado
 sudo bash scripts/setup_hdd_persistence.sh /dev/sdX
 
-# Con cifrado LUKS (recomendado para datos sensibles)
+# Con cifrado LUKS (recomendado)
 sudo bash scripts/setup_hdd_persistence.sh /dev/sdX --luks
 
-# Sin confirmación interactiva (para automatización)
+# Sin confirmación (automatización)
 sudo bash scripts/setup_hdd_persistence.sh /dev/sdX --luks --force
-
-# Ver ayuda
-sudo bash scripts/setup_hdd_persistence.sh --help
 ```
 
-### Paso 5 — Deshabilitar Secure Boot
+---
+
+### 🔹 Opción B — Windows (WSL + PowerShell)
+
+#### Paso 1 — Configurar WSL con Kali Linux
+```powershell
+# PowerShell como ADMINISTRADOR
+.\scripts\wsl_build.ps1 -SetupWsl
+```
+Esto instala WSL2 y la distribución Kali Linux automáticamente.
+
+#### Paso 2 — Construir la ISO
+```powershell
+# PowerShell (no necesita admin para esto)
+.\scripts\wsl_build.ps1 -Build
+```
+Esto copia el proyecto a WSL, instala dependencias, ejecuta el build, y trae la ISO de vuelta a Windows.
+
+#### Paso 3 — Flashear la ISO a un USB/HDD
+**Método 1 — PowerShell (automático):**
+```powershell
+# PowerShell como ADMINISTRADOR
+.\scripts\flash_iso.ps1
+
+# O especificando la ISO directamente
+.\scripts\flash_iso.ps1 -IsoPath ".\EyeOfGod_KaliPurple_2025.3_HDD.iso" -Force
+```
+
+**Método 2 — Menú interactivo (doble click):**
+Simplemente haz doble click en `scripts\flash_iso.bat` y selecciona la opción deseada.
+
+**Método 3 — Rufus (recomendado si los scripts no funcionan):**
+1. Descarga [Rufus](https://rufus.ie)
+2. Abre Rufus, selecciona el USB/HDD externo
+3. En "Selección de arranque", elige la ISO
+4. Esquema de partición: **MBR** (o GPT si tu PC es UEFI)
+5. Click **EMPEZAR**
+
+#### Paso 4 — Configurar persistencia
+La persistencia requiere Linux. Opciones:
+- **WSL:** `wsl -d kali-linux` y sigue los pasos de Linux
+- **Máquina virtual:** Arranca cualquier Linux Live y ejecuta el script
+- **Bootea la ISO sin persistencia** primero y configura después desde Kali
+
+---
+
+### ⚠ Paso 5 para todos — Deshabilitar Secure Boot
 En la BIOS/UEFI del equipo donde vas a bootear:
 - `Secure Boot` → **Disabled**
 - `Boot Order` → HDD externo primero
@@ -220,18 +254,14 @@ persistence-encryption=luks   # (solo LUKS) Indica cifrado
 
 ---
 
-## NOTAS DE SEGURIDAD
+## NOTAS
 
 - **Secure Boot debe estar DESHABILITADO** — el kernel de Kali no está firmado
 - Las credenciales del proyecto (Groq, Telegram, etc.) van en `/etc/eyegod/secrets`
 - Con LUKS, sin la contraseña los datos son irrecuperables
 - El HDD externo puede usarse en cualquier equipo compatible con BIOS/UEFI x86_64
-
----
-
-> **⚠ Nota:** Si encuentras un directorio `{iso_root/` con nombres extraños, fue creado por una ejecución fallida del build script. Elimínalo con `rm -rf './{iso_root}'` y usa `--clean` la próxima vez.
-
-> **⚠ Los scripts requieren `sudo`** — tanto `build_kali_hdd.sh` como `setup_hdd_persistence.sh` necesitan permisos de root.
+- Si encuentras un directorio `{iso_root/` con nombres extraños, elimínalo con `rm -rf './{iso_root}'` y usa `--clean` la próxima vez
+- Los scripts `.sh` requieren `sudo`; los scripts `.ps1` requieren PowerShell como **Administrador**
 
 ---
 
