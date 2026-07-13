@@ -77,7 +77,7 @@ if (-not $isAdmin) {
 # ── Listar discos ─────────────────────────────────────────────────────────────
 function List-Disks {
     Write-Host "`nDiscos disponibles:" -ForegroundColor Cyan
-    Get-Disk | Where-Object { $_.BusType -notin @('File Backed Virtual', 'USB', 'SCSI', 'SAS') -or $_.Size -gt 16GB } |
+    Get-Disk | Where-Object { $_.BusType -ne 'File Backed Virtual' -and $_.Size -gt 10GB } |
         Sort-Object Number |
         Format-Table -AutoSize -Property `
             @{N="N°";E={$_.Number}},
