@@ -2,6 +2,11 @@
   <img src="docs/assets/eyegod_logo.png" alt="Eye of God" width="200"/>
 </p>
 
+<!--
+  ℹ️ The logo image above (eyegod_logo.png) will show as broken until you add your own logo.
+  Place a 200x200 PNG logo at docs/assets/eyegod_logo.png to fix it.
+-->
+
 <h1 align="center">👁 EYE OF GOD V∞ × KALI PURPLE</h1>
 <h3 align="center">Custom Kali Linux Live ISO — HDD External / USB Boot</h3>
 

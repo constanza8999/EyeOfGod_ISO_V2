@@ -1,0 +1,47 @@
+# 👁 Eye of God V∞ × Kali Purple — CI Build
+# This workflow is a template for automated ISO building.
+# It requires a self-hosted runner with Kali Linux or Docker.
+# Enable it when you have a runner available.
+
+name: Build ISO
+
+on:
+  workflow_dispatch:        # Manual trigger
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/**'
+      - 'iso_root/**'
+      - '.github/workflows/build.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: kalilinux/kali-rolling
+      options: --privileged
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies
+      run: |
+        apt-get update -qq
+        apt-get install -y --no-install-recommends \
+          xorriso squashfs-tools debootstrap \
+          grub-pc-bin grub-efi-amd64-bin \
+          mtools dosfstools live-build live-boot \
+          cryptsetup-bin curl wget python3 python3-pip \
+          memtest86+
+
+    - name: Build ISO
+      run: |
+        bash scripts/build_kali_hdd.sh --clean .
+
+    - name: Upload ISO
+      uses: actions/upload-artifact@v4
+      with:
+        name: EyeOfGod-KaliPurple-ISO
+        path: EyeOfGod_KaliPurple_2025.3_HDD.iso
+        retention-days: 7
