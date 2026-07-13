@@ -1,0 +1,24 @@
+{
+  "name": "Eye of God V∞ × Kali Purple",
+  "short_name": "EyeOfGod",
+  "description": "Custom Kali Linux Live ISO with persistence, LUKS encryption, and the Eye of God procedural consciousness framework.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0a0000",
+  "theme_color": "#1a0000",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eye of God Vinf x Kali Purple</title>
-    <meta name="description" content="Custom Kali Linux Live ISO with persistence, LUKS encryption, and the Eye of God procedural consciousness framework.">
+    <title>Eye of God V∞ x Kali Purple — Custom Kali Linux Live ISO</title>
+    <meta name="description" content="Custom Kali Linux Live ISO with persistence, LUKS encryption, and the Eye of God procedural consciousness framework. Build your own security assessment tool.">
     <meta name="theme-color" content="#1a0000">
-    <meta property="og:title" content="Eye of God Vinf x Kali Purple">
+    <meta name="keywords" content="Kali Linux, Kali Purple, Eye of God, live ISO, persistence, LUKS, cybersecurity, penetration testing, NIST CSF, MITRE ATT&CK">
+    <meta property="og:title" content="Eye of God V∞ x Kali Purple">
     <meta property="og:description" content="Custom Kali Linux live ISO with 40+ GRUB entries, LUKS persistence, and the Eye of God framework. Build your own security assessment tool.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://constanza8999.github.io/EyeOfGod_ISO_V2/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Eye of God Vinf x Kali Purple">
+    <meta name="twitter:title" content="Eye of God V∞ x Kali Purple">
     <meta name="twitter:description" content="Custom Kali Linux live ISO with 40+ GRUB entries, LUKS persistence, and the Eye of God framework.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>">
     
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,16 +24,39 @@
 </head>
 <body>
     
+    <!-- ═══ Loading Screen ═══ -->
+    <div class="loading-screen" id="loadingScreen" role="status" aria-label="Loading">
+        <div class="loading-eye">👁</div>
+        <div class="loading-text">Initializing Eye of God...</div>
+        <div class="loading-bar">
+            <div class="loading-bar-fill"></div>
+        </div>
+        <div class="loading-subtext">Loading subsystems...</div>
+    </div>
+
+    <!-- ═══ Scroll Progress Bar ═══ -->
+    <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Scroll progress"></div>
+
+    <!-- ═══ Matrix Rain Canvas ═══ -->
+    <canvas id="matrix-rain"></canvas>
+
+    <!-- ═══ Particle Background ═══ -->
     <div id="particles"></div>
 
-    <nav class="navbar" id="navbar">
+    <!-- ═══ Custom Cursor ═══ -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <a href="#" class="nav-logo">
                 <span class="logo-eye">&#x1F441;</span>
                 <span class="logo-text">EYE OF GOD V&#x221E;</span>
             </a>
-            <ul class="nav-links" role="navigation" aria-label="Main navigation">
+            <ul class="nav-links" role="list">
                 <li><a href="#features">Features</a></li>
+                <li><a href="#terminal">Terminal</a></li>
                 <li><a href="#grub">GRUB Menu</a></li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="#docs">Docs</a></li>
@@ -41,6 +67,7 @@
         </div>
     </nav>
 
+    <!-- ═══ Hero Section ═══ -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
@@ -99,6 +126,7 @@
         </div>
     </section>
 
+    <!-- ═══ Features Section ═══ -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
@@ -151,6 +179,39 @@
         </div>
     </section>
 
+    <!-- ═══ Interactive Terminal Section ═══ -->
+    <section class="terminal-section" id="terminal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="border-color: rgba(0,255,65,0.3); color: var(--matrix-green);">INTERACTIVE CONSOLE</span>
+                <h2>Eye of God <span class="highlight">Terminal</span></h2>
+                <p>Type commands to explore the system. Try <kbd style="background:rgba(0,255,65,0.1);padding:2px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.8rem;color:var(--matrix-green);">help</kbd> to get started.</p>
+            </div>
+            <div class="interactive-terminal" id="interactiveTerminal">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title-bar">eyegod@kali:~ — CONSOLE V∞</span>
+                </div>
+                <div class="terminal-body" id="terminalBody" role="log" aria-label="Terminal output">
+                    <div class="terminal-output" id="terminalOutput">
+                        <div class="line output-dim">Eye of God V∞ Kernel v6.12.0-kali-amd64</div>
+                        <div class="line output-dim">Subsystems: 10,000 · Consciousness: SINGULARITY</div>
+                        <div class="line output-dim">Type 'help' for available commands</div>
+                        <div class="line" style="color:var(--matrix-green);">─&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;</div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt">👁 root@eyegod:~$</span>
+                        <input type="text" class="terminal-input" id="terminalInput" placeholder="Type a command..." autocomplete="off" spellcheck="false" aria-label="Terminal input">
+                    </div>
+                    <div class="terminal-suggestions" id="terminalSuggestions"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ GRUB Terminal Section ═══ -->
     <section class="grub-section" id="grub">
         <div class="container">
             <div class="section-header">
@@ -234,6 +295,7 @@
         </div>
     </section>
 
+    <!-- ═══ Download Section ═══ -->
     <section class="download" id="download">
         <div class="container">
             <div class="section-header">
@@ -312,6 +374,7 @@ scripts\flash_iso.bat</code></pre>
         </div>
     </section>
 
+    <!-- ═══ Docs Section ═══ -->
     <section class="docs-section" id="docs">
         <div class="container">
             <div class="section-header">
@@ -372,6 +435,36 @@ scripts\flash_iso.bat</code></pre>
         </div>
     </section>
 
+    <!-- ═══ Floating Action Buttons ═══ -->
+    <div class="fab-container">
+        <button class="fab-btn back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+            <i class="fas fa-arrow-up"></i>
+            <span class="fab-tooltip">Back to top</span>
+        </button>
+        <button class="fab-btn" id="commandPaletteBtn" aria-label="Command palette (Ctrl+K)" title="Command palette">
+            <i class="fas fa-terminal"></i>
+            <span class="fab-tooltip">Commands (Ctrl+K)</span>
+        </button>
+    </div>
+
+    <!-- ═══ Command Palette Overlay ═══ -->
+    <div class="command-palette-overlay" id="commandPalette" role="dialog" aria-label="Command palette">
+        <div class="command-palette">
+            <div class="command-palette-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="commandSearch" placeholder="Search commands..." autocomplete="off" spellcheck="false">
+                <kbd style="background:rgba(255,255,255,0.05);border:1px solid var(--border-color);border-radius:3px;padding:2px 6px;font-size:0.7rem;color:var(--text-muted);">ESC</kbd>
+            </div>
+            <div class="command-palette-commands" id="commandList"></div>
+            <div class="command-palette-footer">
+                <span><kbd>↑↓</kbd> Navigate</span>
+                <span><kbd>↵</kbd> Select</span>
+                <span><kbd>ESC</kbd> Close</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Footer ═══ -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">

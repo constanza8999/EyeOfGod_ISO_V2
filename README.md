@@ -154,4 +154,11 @@ The Eye of God framework is a procedural consciousness system that runs on top o
   <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2">GitHub</a> •
   <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/wiki">Wiki</a> •
   <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/issues">Issues</a>
+
+<!-- Website -->
+<p align="center">
+  <a href="https://constanza8999.github.io/EyeOfGod_ISO_V2/">
+    <img src="https://img.shields.io/badge/🌐_Website-Visit-red?style=for-the-badge" alt="Website">
+  </a>
+</p>
 </p>
