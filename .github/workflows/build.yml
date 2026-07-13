@@ -1,7 +1,6 @@
 # 👁 Eye of God V∞ × Kali Purple — CI Build
-# This workflow is a template for automated ISO building.
-# It requires a self-hosted runner with Kali Linux or Docker.
-# Enable it when you have a runner available.
+# Builds the ISO on pushes to main, PRs, and manual triggers.
+# For releases, use release.yml (triggered by tags v*).
 
 name: Build ISO
 
@@ -12,18 +11,52 @@ on:
     paths:
       - 'scripts/**'
       - 'iso_root/**'
-      - '.github/workflows/build.yml'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'scripts/**'
+      - 'iso_root/**'
 
 env:
   DEBIAN_FRONTEND: noninteractive
 
 jobs:
+  lint:
+    name: Lint Scripts
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: ShellCheck Bash Scripts
+      uses: ludeeus/action-shellcheck@master
+      with:
+        scandir: ./scripts
+        severity: warning
+      continue-on-error: true
+    
+    - name: Check GRUB Syntax
+      run: |
+        echo "::notice title=GRUB::Validating grub.cfg syntax"
+        # Basic validation: check for menuentry declarations
+        if grep -q 'menuentry' iso_root/boot/grub/grub.cfg 2>/dev/null; then
+          echo "✅ grub.cfg has menuentry declarations"
+        fi
+        ENTRIES=$(grep -c 'menuentry' iso_root/boot/grub/grub.cfg 2>/dev/null || echo 0)
+        echo "📋 Found $ENTRIES boot entries"
+
   build:
+    name: Build ISO
+    needs: lint
     runs-on: ubuntu-latest
     container:
       image: kalilinux/kali-rolling
       options: --privileged
-
+    # Skip build for PRs (too resource intensive)
+    if: github.event_name != 'pull_request'
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -37,14 +70,21 @@ jobs:
           mtools dosfstools live-build live-boot \
           cryptsetup-bin curl wget python3 python3-pip \
           memtest86+
-
+    
     - name: Build ISO
       run: |
         bash scripts/build_kali_hdd.sh --clean .
+    
+    - name: List Build Output
+      run: |
+        ls -lh EyeOfGod_KaliPurple_*_HDD.iso 2>/dev/null || echo "No ISO found"
+        echo "Build artifacts:"
+        ls -la *.iso 2>/dev/null || true
 
-    - name: Upload ISO
+    - name: Upload ISO Artifact
       uses: actions/upload-artifact@v4
       with:
         name: EyeOfGod-KaliPurple-ISO
         path: EyeOfGod_KaliPurple_*_HDD.iso
         retention-days: 30
+        if-no-files-found: error

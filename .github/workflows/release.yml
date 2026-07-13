@@ -1,0 +1,154 @@
+# 👁 Eye of God V∞ × Kali Purple — Release Workflow
+# Automatically builds the ISO and creates a GitHub Release when a tag is pushed.
+# Trigger: git push origin v*
+
+name: Release ISO
+
+on:
+  push:
+    tags:
+      - 'v*'           # Triggers on v1.0.0, v2025.3.1, etc.
+  workflow_dispatch:    # Manual trigger for testing
+    inputs:
+      tag:
+        description: 'Tag name for the release'
+        required: true
+        default: 'v2025.3.1'
+
+env:
+  DEBIAN_FRONTEND: noninteractive
+
+jobs:
+  # ── Job 1: Create Release ──────────────────────────────────────────────────
+  create_release:
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      version: ${{ steps.version.outputs.version }}
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for changelog
+
+    - name: Extract Version
+      id: version
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          echo "version=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
+        else
+          echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Generate Release Notes
+      id: release_notes
+      run: |
+        # Get the previous tag for changelog diff
+        PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+        VERSION="${{ steps.version.outputs.version }}"
+        
+        # Generate release notes
+        cat > release_notes.md << EOF
+        # 👁 Eye of God V∞ × Kali Purple — Release ${VERSION}
+        
+        > Kernel 6.12.0 · Kali Linux 2025.3 · BIOS+UEFI Hybrid Boot
+        
+        ## 📥 Download
+        
+        - **ISO Image:** Attached below as a build artifact
+        - **Source Code:** https://github.com/${{ github.repository }}/tree/${VERSION}
+        
+        ## ✨ Changes
+        EOF
+        
+        # Add commit log
+        if [ -n "$PREV_TAG" ]; then
+          echo "" >> release_notes.md
+          git log --oneline --no-decorate "${PREV_TAG}..HEAD" >> release_notes.md || true
+        else
+          echo "" >> release_notes.md
+          git log --oneline --no-decorate -30 >> release_notes.md || true
+        fi
+        
+        # Add usage instructions
+        cat >> release_notes.md << 'USAGE'
+        
+        ## 🚀 Quick Start
+        
+        ### Linux
+        \`\`\`bash
+        git clone https://github.com/${{ github.repository }}.git
+        cd EyeOfGod_ISO_V2
+        sudo bash scripts/build_kali_hdd.sh --clean .
+        sudo dd if=EyeOfGod_KaliPurple_2025.3_HDD.iso of=/dev/sdX bs=4M status=progress
+        sudo bash scripts/setup_hdd_persistence.sh /dev/sdX --luks
+        \`\`\`
+        
+        ### Windows (WSL2)
+        \`\`\`powershell
+        .\\scripts\\wsl_build.ps1 -SetupWsl
+        .\\scripts\\wsl_build.ps1 -Build
+        .\\scripts\\flash_iso.ps1
+        \`\`\`
+        
+        ## ⚠️ Important
+        - Disable **Secure Boot** in BIOS/UEFI
+        - Minimum **32GB** external HDD/USB (128GB+ recommended)
+        USAGE
+
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.version.outputs.version }}
+        name: Eye of God V∞ × Kali Purple ${{ steps.version.outputs.version }}
+        body_path: release_notes.md
+        draft: false
+        prerelease: false
+        generate_release_notes: false
+        fail_on_unmatched_files: true
+
+  # ── Job 2: Build ISO (depends on release creation) ────────────────────────
+  build_iso:
+    needs: create_release
+    runs-on: ubuntu-latest
+    container:
+      image: kalilinux/kali-rolling
+      options: --privileged
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies
+      run: |
+        apt-get update -qq
+        apt-get install -y -qq --no-install-recommends \
+          xorriso squashfs-tools debootstrap \
+          grub-pc-bin grub-efi-amd64-bin \
+          mtools dosfstools live-build live-boot \
+          cryptsetup-bin curl wget python3 python3-pip \
+          memtest86+
+
+    - name: Build ISO
+      run: |
+        bash scripts/build_kali_hdd.sh --clean .
+
+    - name: Upload ISO to Release
+      uses: softprops/action-gh-release@v2
+      if: success()
+      with:
+        tag_name: ${{ needs.create_release.outputs.version }}
+        files: |
+          EyeOfGod_KaliPurple_*.iso
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload ISO as Artifact (backup)
+      uses: actions/upload-artifact@v4
+      if: success()
+      with:
+        name: EyeOfGod-KaliPurple-ISO-${{ needs.create_release.outputs.version }}
+        path: EyeOfGod_KaliPurple_*_HDD.iso
+        retention-days: 90
