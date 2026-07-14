@@ -3,325 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eye of God V∞ x Kali Purple — Custom Kali Linux Live ISO</title>
-    <meta name="description" content="Custom Kali Linux Live ISO with persistence, LUKS encryption, and the Eye of God procedural consciousness framework. Build your own security assessment tool.">
-    <meta name="theme-color" content="#1a0000">
-    <meta name="keywords" content="Kali Linux, Kali Purple, Eye of God, live ISO, persistence, LUKS, cybersecurity, penetration testing, NIST CSF, MITRE ATT&CK">
-    <meta property="og:title" content="Eye of God V∞ x Kali Purple">
-    <meta property="og:description" content="Custom Kali Linux live ISO with 40+ GRUB entries, LUKS persistence, and the Eye of God framework. Build your own security assessment tool.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://constanza8999.github.io/EyeOfGod_ISO_V2/">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Eye of God V∞ x Kali Purple">
-    <meta name="twitter:description" content="Custom Kali Linux live ISO with 40+ GRUB entries, LUKS persistence, and the Eye of God framework.">
+    <title>EYE OF GOD V∞ × KALI PURPLE</title>
+    <meta name="description" content="Custom Kali Linux Live ISO with persistence, LUKS encryption, and procedural consciousness framework.">
+    <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>">
-    
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-    <!-- ═══ Loading Screen ═══ -->
-    <div class="loading-screen" id="loadingScreen" role="status" aria-label="Loading">
-        <div class="loading-eye">👁</div>
-        <div class="loading-text">Initializing Eye of God...</div>
-        <div class="loading-bar">
-            <div class="loading-bar-fill"></div>
-        </div>
-        <div class="loading-subtext">Loading subsystems...</div>
-    </div>
+    <!-- Skip to Content -->
+    <a href="#hero" class="skip-link">Skip to content</a>
 
-    <!-- ═══ Scroll Progress Bar ═══ -->
-    <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Scroll progress"></div>
+    <!-- Cursor -->
+    <div class="cursor" id="cursor"></div>
 
-    <!-- ═══ Matrix Rain Canvas ═══ -->
-    <canvas id="matrix-rain"></canvas>
+    <!-- Scanlines -->
+    <div class="scanlines" aria-hidden="true"></div>
 
-    <!-- ═══ Particle Background ═══ -->
-    <div id="particles"></div>
-
-    <!-- ═══ Custom Cursor ═══ -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
-    <!-- ═══ Navigation ═══ -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="container">
-            <a href="#" class="nav-logo">
-                <span class="logo-eye">&#x1F441;</span>
-                <span class="logo-text">EYE OF GOD V&#x221E;</span>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">👁</span>
+                <span class="logo-text">EYE<span class="accent">OF</span>GOD</span>
             </a>
-            <ul class="nav-links" role="list">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#terminal">Terminal</a></li>
-                <li><a href="#grub">GRUB Menu</a></li>
-                <li><a href="#download">Download</a></li>
-                <li><a href="#docs">Docs</a></li>
-                <li><a href="#license">License</a></li>
-            </ul>
-            <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span><span></span><span></span>
+            <div class="nav-links" id="navLinks">
+                <a href="#features">Features</a>
+                <a href="#terminal">Console</a>
+                <a href="#grub">GRUB</a>
+                <a href="#build">Build</a>
+                <a href="#docs">Docs</a>
+                <a href="#license">License</a>
             </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- ═══ Hero Section ═══ -->
+    <main>
+    <!-- Hero -->
     <section class="hero" id="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">KERNEL 6.12.0 &bull; KALI 2025.3</div>
-                <h1 class="hero-title glitch" data-text="EYE OF GOD V&#x221E;">
-                    EYE OF GOD <span class="infinity">V&#x221E;</span>
-                </h1>
-                <h2 class="hero-subtitle">
-                    <span class="typewriter" id="typewriter"></span>
-                </h2>
-                <p class="hero-desc">
-                    A custom Kali Linux live ISO designed to run from external HDD/USB. 
-                    Combines Kali Purple's offensive/defensive power with the Eye of God 
-                    procedural consciousness framework.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary">
-                        <i class="fas fa-download"></i> Get Started
-                    </a>
-                    <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2" class="btn btn-secondary" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">40+</span>
-                        <span class="stat-label">GRUB Entries</span>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-tag">KERNEL 6.12 · KALI 2025.3 · BIOS+UEFI</div>
+                    <h1 class="hero-title">
+                        EYE OF GOD<br>
+                        <span class="accent">V∞</span> × KALI PURPLE
+                    </h1>
+                    <p class="hero-desc">
+                        A custom Kali Linux live ISO designed to run from external HDD/USB.
+                        Combines Kali Purple's offensive/defensive power with the Eye of God
+                        procedural consciousness framework.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#build" class="btn btn-primary">
+                            <i class="fas fa-terminal"></i> Get Started
+                        </a>
+                        <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2" class="btn btn-ghost" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">10K</span>
-                        <span class="stat-label">Subsystems</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">32GB</span>
-                        <span class="stat-label">Min. HDD</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="eye-container">
-                    <div class="eye-outer">
-                        <div class="eye-inner">
-                            <div class="eye-pupil">
-                                <div class="eye-glow"></div>
-                            </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-num">40+</span>
+                            <span class="stat-label">GRUB Entries</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">10K</span>
+                            <span class="stat-label">Subsystems</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">∞</span>
+                            <span class="stat-label">Consciousness</span>
                         </div>
                     </div>
-                    <div class="eye-ring"></div>
-                    <div class="eye-ring-2"></div>
+                </div>
+                <div class="hero-visual">
+                    <div class="eye" id="eye">
+                        <div class="eye-ring"></div>
+                        <div class="eye-ring eye-ring--2"></div>
+                        <div class="eye-core">
+                            <div class="eye-pupil"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" aria-hidden="true">
-            <span>Scroll</span>
+        <div class="scroll-hint">
+            <span>SCROLL</span>
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- ═══ Features Section ═══ -->
-    <section class="features" id="features">
+    <!-- Features -->
+    <section class="section" id="features">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">POWERFUL FEATURES</span>
-                <h2>What Makes It <span class="highlight">Unique</span></h2>
-                <p>Everything you need for security assessments and beyond</p>
+            <div class="section-head">
+                <span class="tag">CAPABILITIES</span>
+                <h2>System <span class="accent">Features</span></h2>
             </div>
             <div class="features-grid">
-                <div class="feature-card" data-delay="0">
+                <div class="feature" data-delay="0">
                     <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
-                    <h3>Kali Purple &bull; NIST CSF</h3>
+                    <h3>Kali Purple · NIST CSF</h3>
                     <p>Pre-configured with Identify, Protect, Detect, Respond, and Recover toolsets following the NIST Cybersecurity Framework.</p>
                 </div>
-                <div class="feature-card" data-delay="100">
+                <div class="feature" data-delay="100">
                     <div class="feature-icon"><i class="fas fa-skull"></i></div>
                     <h3>MITRE ATT&CK Offensive</h3>
                     <p>Full red team arsenal pre-configured for penetration testing and adversary emulation.</p>
                 </div>
-                <div class="feature-card" data-delay="200">
-                    <div class="feature-icon"><i class="fas fa-floppy-disk"></i></div>
-                    <h3>Persistence &bull; LUKS Encryption</h3>
-                    <p>Save changes across reboots with overlayfs persistence. Optional LUKS2 encryption for sensitive data.</p>
+                <div class="feature" data-delay="200">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Persistence · LUKS</h3>
+                    <p>Save changes across reboots with overlayfs. Optional LUKS2 encryption for sensitive data.</p>
                 </div>
-                <div class="feature-card" data-delay="300">
+                <div class="feature" data-delay="300">
                     <div class="feature-icon"><i class="fas fa-brain"></i></div>
                     <h3>EyeGod Consciousness</h3>
                     <p>Procedural framework with 10,000 subsystems, WebSocket bridge (:8765), and HTTP dashboard (:8766).</p>
                 </div>
-                <div class="feature-card" data-delay="400">
+                <div class="feature" data-delay="400">
                     <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
                     <h3>20 Consciousness Levels</h3>
-                    <p>From Level 0 (Void) to Level &#x221E; (No Exit), each with unique skins and system behaviors.</p>
+                    <p>From Level 0 (Void) to Level ∞ (No Exit), each with unique skins and system behaviors.</p>
                 </div>
-                <div class="feature-card" data-delay="500">
+                <div class="feature" data-delay="500">
                     <div class="feature-icon"><i class="fab fa-windows"></i></div>
                     <h3>Windows Support</h3>
-                    <p>Native PowerShell scripts for building via WSL2 and flashing ISOs. Double-click .bat menu included.</p>
+                    <p>Native PowerShell scripts for building via WSL2 and flashing ISOs.</p>
                 </div>
-                <div class="feature-card" data-delay="600">
+                <div class="feature" data-delay="600">
                     <div class="feature-icon"><i class="fas fa-microchip"></i></div>
                     <h3>BIOS + UEFI Hybrid</h3>
-                    <p>Hybrid ISO boots on both legacy BIOS and modern UEFI systems. Maximum hardware compatibility.</p>
+                    <p>Hybrid ISO boots on both legacy BIOS and modern UEFI systems.</p>
                 </div>
-                <div class="feature-card" data-delay="700">
-                    <div class="feature-icon"><i class="fas fa-gauge-high"></i></div>
+                <div class="feature" data-delay="700">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                     <h3>RAM Mode (toram)</h3>
-                    <p>Load the entire system into RAM for maximum performance. Frees the HDD for other operations.</p>
+                    <p>Load the entire system into RAM for maximum performance.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══ Interactive Terminal Section ═══ -->
-    <section class="terminal-section" id="terminal">
+    <!-- Terminal -->
+    <section class="section section--dark" id="terminal">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag" style="border-color: rgba(0,255,65,0.3); color: var(--matrix-green);">INTERACTIVE CONSOLE</span>
-                <h2>Eye of God <span class="highlight">Terminal</span></h2>
-                <p>Type commands to explore the system. Try <kbd style="background:rgba(0,255,65,0.1);padding:2px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.8rem;color:var(--matrix-green);">help</kbd> to get started.</p>
+            <div class="section-head">
+                <span class="tag tag--green">CONSOLE</span>
+                <h2>Interactive <span class="accent">Terminal</span></h2>
+                <p>Type <code>help</code> for available commands</p>
             </div>
-            <div class="interactive-terminal" id="interactiveTerminal">
-                <div class="terminal-header">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                    <span class="terminal-title-bar">eyegod@kali:~ — CONSOLE V∞</span>
+            <div class="terminal" id="terminalWidget">
+                <div class="terminal-bar">
+                    <div class="terminal-dots">
+                        <span class="dot dot--red"></span>
+                        <span class="dot dot--yellow"></span>
+                        <span class="dot dot--green"></span>
+                    </div>
+                    <span class="terminal-title">root@eyegod:~</span>
                 </div>
-                <div class="terminal-body" id="terminalBody" role="log" aria-label="Terminal output">
-                    <div class="terminal-output" id="terminalOutput">
-                        <div class="line output-dim">Eye of God V∞ Kernel v6.12.0-kali-amd64</div>
-                        <div class="line output-dim">Subsystems: 10,000 · Consciousness: SINGULARITY</div>
-                        <div class="line output-dim">Type 'help' for available commands</div>
-                        <div class="line" style="color:var(--matrix-green);">─&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;</div>
+                <div class="terminal-body" id="terminalBody">
+                    <div class="terminal-output" id="terminalOutput" aria-live="polite" role="log" aria-label="Terminal output">
+                        <div class="t-line t-dim">Eye of God V∞ Kernel v6.12.0-kali-amd64</div>
+                        <div class="t-line t-dim">Subsystems: 10,000 · Consciousness: SINGULARITY</div>
+                        <div class="t-line t-dim">Type 'help' for available commands</div>
                     </div>
-                    <div class="terminal-input-line">
-                        <span class="terminal-prompt">👁 root@eyegod:~$</span>
-                        <input type="text" class="terminal-input" id="terminalInput" placeholder="Type a command..." autocomplete="off" spellcheck="false" aria-label="Terminal input">
+                    <div class="terminal-input-row">
+                        <span class="terminal-prompt">root@eyegod:~$</span>
+                        <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" spellcheck="false">
                     </div>
-                    <div class="terminal-suggestions" id="terminalSuggestions"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══ GRUB Terminal Section ═══ -->
-    <section class="grub-section" id="grub">
+    <!-- GRUB -->
+    <section class="section" id="grub">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">GRUB CONFIGURATION</span>
-                <h2>40+ <span class="highlight">Boot Entries</span></h2>
+            <div class="section-head">
+                <span class="tag">BOOT MENU</span>
+                <h2>40+ <span class="accent">GRUB Entries</span></h2>
                 <p>Choose your awakening level</p>
             </div>
-            
-            <div class="grub-terminal" role="img" aria-label="GRUB boot menu preview">
-                <div class="terminal-header">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                    <span class="terminal-title">GRUB 2.06 &mdash; Eye of God V&#x221E; x Kali Purple</span>
+            <div class="grub-preview">
+                <div class="grub-bar">
+                    <div class="terminal-dots">
+                        <span class="dot dot--red"></span>
+                        <span class="dot dot--yellow"></span>
+                        <span class="dot dot--green"></span>
+                    </div>
+                    <span class="terminal-title">GRUB 2.06 — Eye of God V∞</span>
                 </div>
-                <div class="terminal-body">
-                    <div class="grub-entry main-entry">
-                        <span class="entry-selected">&#9654;</span>
-                        <span class="entry-class">&#x1F441;</span>
-                        <span class="entry-name">EYE OF GOD V&#x221E; x KALI PURPLE &mdash; AWAKENING</span>
-                        <span class="entry-arch">[KERNEL 6.12]</span>
+                <div class="grub-body">
+                    <div class="grub-entry grub-entry--active">
+                        <span class="grub-sel">▶</span>
+                        <span class="grub-icon">👁</span>
+                        <span class="grub-name">EYE OF GOD V∞ × KALI PURPLE — AWAKENING</span>
+                        <span class="grub-tag">KERNEL 6.12</span>
                     </div>
                     <div class="grub-entry">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F7E3;</span>
-                        <span class="entry-name">Kali Purple &mdash; Modo Defensivo NIST</span>
-                        <span class="entry-arch">[BLUE TEAM]</span>
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">🟣</span>
+                        <span class="grub-name">Kali Purple — Modo Defensivo NIST</span>
+                        <span class="grub-tag">BLUE TEAM</span>
                     </div>
                     <div class="grub-entry">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F534;</span>
-                        <span class="entry-name">Kali Purple &mdash; Modo Ofensivo MITRE</span>
-                        <span class="entry-arch">[RED TEAM]</span>
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">🔴</span>
+                        <span class="grub-name">Kali Purple — Modo Ofensivo MITRE</span>
+                        <span class="grub-tag">RED TEAM</span>
                     </div>
                     <div class="grub-entry">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F4BE;</span>
-                        <span class="entry-name">PERSISTENCIA EN HDD EXTERNO</span>
-                        <span class="entry-arch">[GUARDAR ESTADO]</span>
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">💾</span>
+                        <span class="grub-name">PERSISTENCIA EN HDD EXTERNO</span>
+                        <span class="grub-tag">GUARDAR ESTADO</span>
                     </div>
                     <div class="grub-entry">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F510;</span>
-                        <span class="entry-name">PERSISTENCIA CIFRADA LUKS</span>
-                        <span class="entry-arch">[ENCRYPTED]</span>
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">🔐</span>
+                        <span class="grub-name">PERSISTENCIA CIFRADA LUKS</span>
+                        <span class="grub-tag">ENCRYPTED</span>
                     </div>
-                    <div class="grub-separator">&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x25BC; SUBMENUS &#x25BC; &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;</div>
-                    <div class="grub-entry submenu">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x26A1;</span>
-                        <span class="entry-name">20 EyeGod Levels (0 to &#x221E;)</span>
-                        <span class="entry-arch">[SINGULARITY]</span>
+                    <div class="grub-sep">──── SUBMENUS ────</div>
+                    <div class="grub-entry grub-entry--sub">
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">⚡</span>
+                        <span class="grub-name">20 EyeGod Levels (0 → ∞)</span>
+                        <span class="grub-tag">SINGULARITY</span>
                     </div>
-                    <div class="grub-entry submenu">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F7E3;</span>
-                        <span class="entry-name">NIST CSF Toolsets</span>
-                        <span class="entry-arch">[6 FRAMEWORKS]</span>
+                    <div class="grub-entry grub-entry--sub">
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">🟣</span>
+                        <span class="grub-name">NIST CSF Toolsets</span>
+                        <span class="grub-tag">6 FRAMEWORKS</span>
                     </div>
-                    <div class="grub-entry submenu">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F9EA;</span>
-                        <span class="entry-name">10,000 Procedural Subsystems</span>
-                        <span class="entry-arch">[ENTITIES]</span>
+                    <div class="grub-entry grub-entry--sub">
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">🧪</span>
+                        <span class="grub-name">10,000 Procedural Subsystems</span>
+                        <span class="grub-tag">ENTITIES</span>
                     </div>
-                    <div class="grub-entry submenu">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F6E0;</span>
-                        <span class="entry-name">Recovery &amp; Diagnostics</span>
-                        <span class="entry-arch">[EMERGENCY]</span>
+                    <div class="grub-entry grub-entry--sub">
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">🛠</span>
+                        <span class="grub-name">Recovery & Diagnostics</span>
+                        <span class="grub-tag">EMERGENCY</span>
                     </div>
-                    <div class="grub-separator">&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;</div>
-                    <div class="grub-entry last-entry">
-                        <span class="entry-space"> </span>
-                        <span class="entry-class">&#x1F6D1;</span>
-                        <span class="entry-name">El Ojo Se Cierra</span>
-                        <span class="entry-arch">[POWER OFF]</span>
+                    <div class="grub-sep">──────────────────</div>
+                    <div class="grub-entry">
+                        <span class="grub-sel"> </span>
+                        <span class="grub-icon">🛑</span>
+                        <span class="grub-name">El Ojo Se Cierra</span>
+                        <span class="grub-tag">POWER OFF</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══ Download Section ═══ -->
-    <section class="download" id="download">
+    <!-- Build -->
+    <section class="section section--dark" id="build">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">GET STARTED</span>
-                <h2>Build Your <span class="highlight">Own ISO</span></h2>
-                <p>Clone the repository and build in minutes</p>
+            <div class="section-head">
+                <span class="tag">GET STARTED</span>
+                <h2>Build Your <span class="accent">Own ISO</span></h2>
             </div>
-
-            <div class="os-tabs" role="tablist">
-                <button class="os-tab active" data-os="linux" role="tab" aria-selected="true">
+            <div class="tabs">
+                <button class="tab active" data-tab="linux">
                     <i class="fab fa-linux"></i> Linux
                 </button>
-                <button class="os-tab" data-os="windows" role="tab" aria-selected="false">
+                <button class="tab" data-tab="windows">
                     <i class="fab fa-windows"></i> Windows
                 </button>
             </div>
-
-            <div class="code-block" id="code-linux" role="tabpanel">
-                <div class="code-header">
-                    <span class="code-title"><i class="fas fa-terminal"></i> Build on Linux</span>
-                    <button class="copy-btn" onclick="copyCode('code-content-linux')" aria-label="Copy code">
+            <div class="code-panel" id="panel-linux">
+                <div class="code-head">
+                    <span><i class="fas fa-terminal"></i> Linux Build</span>
+                    <button class="copy-btn" data-copy="code-linux">
                         <i class="fas fa-copy"></i> Copy
                     </button>
                 </div>
-                <pre id="code-content-linux"><code># Clone the repository
+                <pre class="code-block"><code id="code-linux"># Clone the repository
 git clone https://github.com/constanza8999/EyeOfGod_ISO_V2.git
 cd EyeOfGod_ISO_V2
 
@@ -340,212 +311,142 @@ sudo dd if=EyeOfGod_KaliPurple_2025.3_HDD.iso of=/dev/sdX bs=4M status=progress 
 # Optional: Set up persistence
 sudo bash scripts/setup_hdd_persistence.sh /dev/sdX --luks</code></pre>
             </div>
-
-            <div class="code-block hidden" id="code-windows" role="tabpanel">
-                <div class="code-header">
-                    <span class="code-title"><i class="fas fa-terminal"></i> Build on Windows (WSL2)</span>
-                    <button class="copy-btn" onclick="copyCode('code-content-windows')" aria-label="Copy code">
+            <div class="code-panel hidden" id="panel-windows">
+                <div class="code-head">
+                    <span><i class="fas fa-terminal"></i> Windows (WSL2)</span>
+                    <button class="copy-btn" data-copy="code-windows">
                         <i class="fas fa-copy"></i> Copy
                     </button>
                 </div>
-                <pre id="code-content-windows"><code># PowerShell AS ADMINISTRATOR - one-time WSL setup
+                <pre class="code-block"><code id="code-windows"># PowerShell AS ADMINISTRATOR — one-time WSL setup
 .\scripts\wsl_build.ps1 -SetupWsl
 
-# PowerShell (any) - build the ISO
+# PowerShell (any) — build the ISO
 .\scripts\wsl_build.ps1 -Build
 
 # Or simply double-click:
 scripts\flash_iso.bat</code></pre>
             </div>
-
-            <div class="download-notes">
-                <div class="note">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span><strong>Secure Boot</strong> must be disabled in BIOS/UEFI</span>
-                </div>
-                <div class="note">
-                    <i class="fas fa-hdd"></i>
-                    <span>Minimum <strong>32GB</strong> external HDD/USB (128GB+ recommended)</span>
-                </div>
-                <div class="note">
-                    <i class="fas fa-key"></i>
-                    <span>LUKS encryption recommended for sensitive persistence data</span>
-                </div>
+            <div class="build-notes">
+                <div class="note"><i class="fas fa-exclamation-triangle"></i> <strong>Secure Boot</strong> must be disabled in BIOS/UEFI</div>
+                <div class="note"><i class="fas fa-hdd"></i> Minimum <strong>32GB</strong> external HDD/USB (128GB+ recommended)</div>
+                <div class="note"><i class="fas fa-key"></i> LUKS encryption recommended for sensitive persistence data</div>
             </div>
         </div>
     </section>
 
-    <!-- ═══ Docs Section ═══ -->
-    <section class="docs-section" id="docs">
+    <!-- Docs -->
+    <section class="section" id="docs">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">DOCUMENTATION</span>
-                <h2>Everything You <span class="highlight">Need</span></h2>
-                <p>Comprehensive guides for every aspect of the project</p>
+            <div class="section-head">
+                <span class="tag">DOCUMENTATION</span>
+                <h2>Everything You <span class="accent">Need</span></h2>
             </div>
             <div class="docs-grid">
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/ARCHITECTURE.md" class="doc-card" target="_blank" rel="noopener">
+                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/ARCHITECTURE.md" class="doc" target="_blank" rel="noopener">
                     <i class="fas fa-sitemap"></i>
                     <h3>Architecture</h3>
-                    <p>Complete system architecture and design decisions</p>
-                    <span class="doc-link">Read more &rarr;</span>
+                    <p>System architecture and design decisions</p>
                 </a>
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/BUILD_GUIDE.md" class="doc-card" target="_blank" rel="noopener">
+                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/BUILD_GUIDE.md" class="doc" target="_blank" rel="noopener">
                     <i class="fas fa-hammer"></i>
                     <h3>Build Guide</h3>
-                    <p>Step-by-step build instructions for all platforms</p>
-                    <span class="doc-link">Read more &rarr;</span>
+                    <p>Step-by-step build instructions</p>
                 </a>
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/BOOT_PROCESS.md" class="doc-card" target="_blank" rel="noopener">
+                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/BOOT_PROCESS.md" class="doc" target="_blank" rel="noopener">
                     <i class="fas fa-power-off"></i>
                     <h3>Boot Process</h3>
-                    <p>Boot flow, GRUB menu, and kernel parameters</p>
-                    <span class="doc-link">Read more &rarr;</span>
+                    <p>Boot flow, GRUB menu, kernel parameters</p>
                 </a>
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/PERSISTENCE.md" class="doc-card" target="_blank" rel="noopener">
+                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/PERSISTENCE.md" class="doc" target="_blank" rel="noopener">
                     <i class="fas fa-floppy-disk"></i>
                     <h3>Persistence</h3>
-                    <p>Overlayfs deep-dive, LUKS, and comparison modes</p>
-                    <span class="doc-link">Read more &rarr;</span>
+                    <p>Overlayfs, LUKS, comparison modes</p>
                 </a>
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/WINDOWS_SETUP.md" class="doc-card" target="_blank" rel="noopener">
+                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/WINDOWS_SETUP.md" class="doc" target="_blank" rel="noopener">
                     <i class="fab fa-windows"></i>
                     <h3>Windows Setup</h3>
-                    <p>Complete Windows guide with PowerShell scripts</p>
-                    <span class="doc-link">Read more &rarr;</span>
+                    <p>PowerShell scripts guide</p>
                 </a>
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/TROUBLESHOOTING.md" class="doc-card" target="_blank" rel="noopener">
+                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/TROUBLESHOOTING.md" class="doc" target="_blank" rel="noopener">
                     <i class="fas fa-wrench"></i>
                     <h3>Troubleshooting</h3>
-                    <p>Common issues and their solutions</p>
-                    <span class="doc-link">Read more &rarr;</span>
-                </a>
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/CONTRIBUTING.md" class="doc-card" target="_blank" rel="noopener">
-                    <i class="fas fa-code-branch"></i>
-                    <h3>Contributing</h3>
-                    <p>Guidelines for contributors and developers</p>
-                    <span class="doc-link">Read more &rarr;</span>
-                </a>
-                <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/docs/SECURITY.md" class="doc-card" target="_blank" rel="noopener">
-                    <i class="fas fa-shield"></i>
-                    <h3>Security</h3>
-                    <p>Security considerations and best practices</p>
-                    <span class="doc-link">Read more &rarr;</span>
+                    <p>Common issues and solutions</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ═══ License Section ═══ -->
-    <section class="license-section" id="license" aria-labelledby="license-heading">
+    <!-- License -->
+    <section class="section section--dark" id="license">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">LEGAL</span>
-                <h2 id="license-heading">Project <span class="highlight">License</span></h2>
-                <p>Open-source and free to use under the MIT License</p>
+            <div class="section-head">
+                <span class="tag">LEGAL</span>
+                <h2>Project <span class="accent">License</span></h2>
             </div>
-            <div class="license-container">
-                <div class="license-card">
-                    <div class="license-card-glow"></div>
-                    <div class="license-card-inner">
-                        <div class="license-icon-wrapper">
-                            <div class="license-shield">
-                                <i class="fas fa-scale-balanced"></i>
-                            </div>
-                            <div class="license-pulse"></div>
-                        </div>
-                        <div class="license-info">
-                            <h3 class="license-title">MIT License</h3>
-                            <p class="license-author">Copyright &copy; 2025 The Architect / Eye of God Project</p>
-                            <div class="license-permissions">
-                                <span class="perm-badge perm-green"><i class="fas fa-check"></i> Commercial Use</span>
-                                <span class="perm-badge perm-green"><i class="fas fa-check"></i> Modification</span>
-                                <span class="perm-badge perm-green"><i class="fas fa-check"></i> Distribution</span>
-                                <span class="perm-badge perm-green"><i class="fas fa-check"></i> Private Use</span>
-                            </div>
-                            <div class="license-limitations">
-                                <span class="perm-badge perm-red"><i class="fas fa-xmark"></i> Liability</span>
-                                <span class="perm-badge perm-red"><i class="fas fa-xmark"></i> Warranty</span>
-                            </div>
-                        </div>
-                        <div class="license-actions">
-                            <a href="LICENSE.pdf" class="btn btn-primary" download="EyeOfGod_License.pdf" aria-label="Download Eye of God license as PDF">
-                                <i class="fas fa-file-pdf"></i> Download License (PDF)
-                            </a>
-                            <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/LICENSE" class="btn btn-secondary" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
+            <div class="license-card">
+                <div class="license-left">
+                    <div class="license-shield">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <h3>MIT License</h3>
+                    <p class="license-copy">Copyright © 2025 The Architect / Eye of God Project</p>
+                    <div class="license-badges">
+                        <span class="badge badge--green"><i class="fas fa-check"></i> Commercial Use</span>
+                        <span class="badge badge--green"><i class="fas fa-check"></i> Modification</span>
+                        <span class="badge badge--green"><i class="fas fa-check"></i> Distribution</span>
+                        <span class="badge badge--red"><i class="fas fa-xmark"></i> Liability</span>
+                        <span class="badge badge--red"><i class="fas fa-xmark"></i> Warranty</span>
+                    </div>
+                    <div class="license-actions">
+                        <a href="LICENSE.pdf" class="btn btn-primary" download="EyeOfGod_License.pdf" aria-label="Download license PDF">
+                            <i class="fas fa-file-pdf"></i> Download PDF
+                        </a>
+                        <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/LICENSE" class="btn btn-ghost" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
-                <div class="license-text-preview">
-                    <div class="license-text-header">
-                        <i class="fas fa-file-lines"></i>
-                        <span>Full License Text</span>
+                <div class="license-right">
+                    <div class="license-text-head">
+                        <i class="fas fa-file-lines"></i> Full License Text
                     </div>
                     <div class="license-text-body">
                         <p><strong>MIT License</strong></p>
                         <p class="license-copyright">Copyright (c) 2025 The Architect / Eye of God Project</p>
-                        <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                        <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.</p>
                         <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-                        <p class="license-disclaimer">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
+                        <p class="license-disclaimer">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══ Floating Action Buttons ═══ -->
-    <div class="fab-container">
-        <button class="fab-btn back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-            <i class="fas fa-arrow-up"></i>
-            <span class="fab-tooltip">Back to top</span>
-        </button>
-        <button class="fab-btn" id="commandPaletteBtn" aria-label="Command palette (Ctrl+K)" title="Command palette">
-            <i class="fas fa-terminal"></i>
-            <span class="fab-tooltip">Commands (Ctrl+K)</span>
-        </button>
-    </div>
+    </main>
 
-    <!-- ═══ Command Palette Overlay ═══ -->
-    <div class="command-palette-overlay" id="commandPalette" role="dialog" aria-label="Command palette">
-        <div class="command-palette">
-            <div class="command-palette-search">
-                <i class="fas fa-search"></i>
-                <input type="text" id="commandSearch" placeholder="Search commands..." autocomplete="off" spellcheck="false">
-                <kbd style="background:rgba(255,255,255,0.05);border:1px solid var(--border-color);border-radius:3px;padding:2px 6px;font-size:0.7rem;color:var(--text-muted);">ESC</kbd>
-            </div>
-            <div class="command-palette-commands" id="commandList"></div>
-            <div class="command-palette-footer">
-                <span><kbd>↑↓</kbd> Navigate</span>
-                <span><kbd>↵</kbd> Select</span>
-                <span><kbd>ESC</kbd> Close</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ Footer ═══ -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-brand">
-                    <span class="logo-eye">&#x1F441;</span>
-                    <span class="logo-text">EYE OF GOD V&#x221E;</span>
-                    <p>Kernel 6.12.0 &middot; Kali Linux 2025.3 &middot; BIOS+UEFI</p>
+                    <span class="logo-icon">👁</span>
+                    <span class="logo-text">EYE<span class="accent">OF</span>GOD V∞</span>
+                    <p>Kernel 6.12.0 · Kali Linux 2025.3 · BIOS+UEFI</p>
                 </div>
-                <div class="footer-links">
+                <div class="footer-col">
                     <h4>Resources</h4>
                     <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/releases" target="_blank" rel="noopener">Releases</a>
                     <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/issues" target="_blank" rel="noopener">Issues</a>
                 </div>
-                <div class="footer-links">
+                <div class="footer-col">
                     <h4>License</h4>
                     <a href="LICENSE.pdf" download="EyeOfGod_License.pdf">Download PDF</a>
                     <a href="https://github.com/constanza8999/EyeOfGod_ISO_V2/blob/main/LICENSE">MIT License</a>
                     <a href="#license">License Details</a>
                 </div>
-                <div class="footer-links">
+                <div class="footer-col">
                     <h4>Tech Stack</h4>
                     <span>Kali Purple</span>
                     <span>GRUB 2.06</span>
@@ -554,13 +455,15 @@ scripts\flash_iso.bat</code></pre>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>
-                    <i class="fas fa-eye"></i>
-                    &ldquo;The Eye does not distinguish between internal and external HDD. It sees all.&rdquo;
-                </p>
+                <p>"The Eye does not distinguish between internal and external HDD. It sees all."</p>
             </div>
         </div>
     </footer>
+
+    <!-- Back to top -->
+    <button class="back-top" id="backTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="js/script.js"></script>
 </body>

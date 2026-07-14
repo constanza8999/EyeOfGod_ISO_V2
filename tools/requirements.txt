@@ -1,0 +1,8 @@
+# Eye of God Windows Release Tool - Dependencies
+# Python 3.8+ required
+
+# GUI Framework (included in Python standard library)
+# tkinter is used - no additional dependencies needed
+
+# Build tools (for creating EXE)
+pyinstaller>=5.0

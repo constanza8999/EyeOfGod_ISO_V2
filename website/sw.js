@@ -2,7 +2,7 @@
    ║  EYE OF GOD V∞ × KALI PURPLE — Service Worker (Offline Support)       ║
    ╚══════════════════════════════════════════════════════════════════════════╝ */
 
-const CACHE_NAME = 'eyegod-v1';
+const CACHE_NAME = 'eyegod-v2';
 const ASSETS = [
     '.',
     'index.html',
@@ -39,7 +39,6 @@ self.addEventListener('activate', (event) => {
 
 // Fetch: serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
-    // Only handle GET requests
     if (event.request.method !== 'GET') return;
 
     event.respondWith(
@@ -47,7 +46,6 @@ self.addEventListener('fetch', (event) => {
             if (cached) return cached;
 
             return fetch(event.request).then((response) => {
-                // Cache successful responses for future offline use
                 if (response && response.status === 200) {
                     const clone = response.clone();
                     caches.open(CACHE_NAME).then((cache) => {
@@ -56,8 +54,7 @@ self.addEventListener('fetch', (event) => {
                 }
                 return response;
             }).catch(() => {
-                // Offline fallback for HTML pages
-                if (event.request.headers.get('Accept').includes('text/html')) {
+                if (event.request.headers.get('Accept')?.includes('text/html')) {
                     return caches.match('index.html');
                 }
             });
