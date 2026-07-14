@@ -3,6 +3,10 @@
 *.iso.*
 eyegod_kali_build/
 efi.img
+build/
+dist/
+*.spec
+__pycache__/
 
 # ── OS artifacts ──────────────────────────────────────────────────────────────
 Thumbs.db
