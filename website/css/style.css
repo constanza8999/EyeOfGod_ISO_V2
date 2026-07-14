@@ -1165,15 +1165,16 @@ section {
     opacity: 0;
     transition: opacity 0.5s ease;
     z-index: 0;
-    animation: license-rotate 6s linear infinite;
+    animation: license-glow-pulse 3s ease-in-out infinite;
 }
 
 .license-card:hover .license-card-glow {
     opacity: 0.6;
 }
 
-@keyframes license-rotate {
-    to { transform: rotate(360deg); }
+@keyframes license-glow-pulse {
+    0%, 100% { opacity: 0; filter: blur(0px); }
+    50% { opacity: 0.5; filter: blur(2px); }
 }
 
 .license-card-inner {
